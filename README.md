@@ -32,7 +32,7 @@ Add this to your module build.gradle
 In your <b>activity</b> (Default method "newInstance()"):
 ```java
     // Create an instance of the dialog fragment and show it
-    RangeTimePickerDialog dialog = new RangeTimePickerDialog();
+    StartEndTimePickerDialog dialog = new StartEndTimePickerDialog();
     dialog.newInstance();
     dialog.setRadiusDialog(20); // Set radius of dialog (default is 50)
     dialog.setIs24HourView(true); // Indicates if the format should be 24 hours
@@ -44,14 +44,14 @@ In your <b>activity</b> (Default method "newInstance()"):
 You can instantiate the dialog with more parameters:
 ```java
      // Create an instance of the dialog fragment and show it
-     RangeTimePickerDialog dialog = new RangeTimePickerDialog();
+     StartEndTimePickerDialog dialog = new StartEndTimePickerDialog();
      dialog.newInstance(R.color.CyanWater, R.color.White, R.color.Yellow, R.color.colorPrimary, true);
      FragmentManager fragmentManager = getFragmentManager();
      dialog.show(fragmentManager, "");
 ```
 To read parameter from Dialog your activity have to implements the interface ISelectedTime:
 ```java
-public class MainActivity extends AppCompatActivity implements RangeTimePickerDialog.ISelectedTime
+public class MainActivity extends AppCompatActivity implements StartEndTimePickerDialog.ISelectedTime
 ```
 Then you have to override the method "onSelectedTime":
 ```java
@@ -65,7 +65,7 @@ public void onSelectedTime(int hourStart, int minuteStart, int hourEnd, int minu
 In your <b>fragment</b>:
 ```java
    // Create an instance of the dialog fragment and show it
-   RangeTimePickerDialog dialog = new RangeTimePickerDialog();
+   StartEndTimePickerDialog dialog = new StartEndTimePickerDialog();
    dialog.newInstance(R.color.CyanWater, R.color.White, R.color.Yellow, R.color.colorPrimary, true);
    FragmentManager fragmentManager = getFragmentManager();
    dialog.setTargetFragment(this, MY_FRAGMENT_ID); // MY_FRAGMENT_ID is a personal identifier that allow you to get parameter from dialog into onActivityResult
@@ -81,12 +81,12 @@ public void onActivityResult(int requestCode, int resultCode, Intent data)
    {
       if (resultCode == Activity.RESULT_OK)
       {
-         if (data.getExtras().containsKey(RangeTimePickerDialog.HOUR_START))
+         if (data.getExtras().containsKey(StartEndTimePickerDialog.HOUR_START))
          {
-            int hourStart = data.getExtras().getInt(RangeTimePickerDialog.HOUR_START);
-            int hourEnd = data.getExtras().getInt(RangeTimePickerDialog.HOUR_END);
-            int minuteStart = data.getExtras().getInt(RangeTimePickerDialog.MINUTE_START);
-            int minuteEnd = data.getExtras().getInt(RangeTimePickerDialog.MINUTE_END);
+            int hourStart = data.getExtras().getInt(StartEndTimePickerDialog.HOUR_START);
+            int hourEnd = data.getExtras().getInt(StartEndTimePickerDialog.HOUR_END);
+            int minuteStart = data.getExtras().getInt(StartEndTimePickerDialog.MINUTE_START);
+            int minuteEnd = data.getExtras().getInt(StartEndTimePickerDialog.MINUTE_END);
             // Use the returned value
             Toast.makeText(getActivity(), "Time start:"+hourStart+":"+minuteStart+"\nUntil: "+hourEnd+":"+minuteEnd, Toast.LENGTH_SHORT).show();
          }
