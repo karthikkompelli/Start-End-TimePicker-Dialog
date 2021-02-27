@@ -2,7 +2,6 @@ package com.mcsoft.timerangepickerdialog;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -22,6 +21,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.DialogFragment;
 
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
@@ -515,8 +515,8 @@ public class StartEndTimePickerDialog extends DialogFragment {
      * Set color of timePicker'header
      *
      * @param startEndTimePickerDialog Dialog where is located the timePicker
-     * @param color                 Color to set
-     * @param nameTimePicker        id of timePicker declared into xml (eg. my_time_picker [android:id="@+id/my_time_picker"])
+     * @param color                    Color to set
+     * @param nameTimePicker           id of timePicker declared into xml (eg. my_time_picker [android:id="@+id/my_time_picker"])
      */
     private void setTimePickerHeaderBackgroundColor(StartEndTimePickerDialog startEndTimePickerDialog, int color, String nameTimePicker) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
