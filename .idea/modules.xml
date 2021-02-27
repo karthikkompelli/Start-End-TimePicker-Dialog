@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Range-Time-Picker-Dialog.iml" filepath="$PROJECT_DIR$/.idea/modules/Range-Time-Picker-Dialog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Range-Time-Picker-Dialog.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Range-Time-Picker-Dialog.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/startendtimepickerdialog/Range-Time-Picker-Dialog.startendtimepickerdialog.iml" filepath="$PROJECT_DIR$/.idea/modules/startendtimepickerdialog/Range-Time-Picker-Dialog.startendtimepickerdialog.iml" />
+    </modules>
+  </component>
+</project>
