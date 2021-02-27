@@ -10,9 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.mcsoft.timerangepickerdialog.RangeTimePickerDialog;
+import com.mcsoft.timerangepickerdialog.StartEndTimePickerDialog;
 
-public class MainActivity extends AppCompatActivity implements RangeTimePickerDialog.ISelectedTime
+public class MainActivity extends AppCompatActivity implements StartEndTimePickerDialog.ISelectedTime
 {
    @Override
    protected void onCreate(Bundle savedInstanceState)
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements RangeTimePickerDi
    public void showCustomDialogTimePicker()
    {
       // Create an instance of the dialog fragment and show it
-      RangeTimePickerDialog dialog = new RangeTimePickerDialog();
+      StartEndTimePickerDialog dialog = new StartEndTimePickerDialog();
       dialog.newInstance();
       dialog.setIs24HourView(true);
       dialog.setRadiusDialog(20);

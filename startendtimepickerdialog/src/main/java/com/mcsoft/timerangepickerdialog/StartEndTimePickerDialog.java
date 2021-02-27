@@ -11,12 +11,6 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.RequiresApi;
-import com.google.android.material.tabs.TabItem;
-import com.google.android.material.tabs.TabLayout;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.AlertDialog;
-import androidx.cardview.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,11 +18,19 @@ import android.widget.Button;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
+
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
+
 import java.lang.reflect.Field;
 import java.util.Calendar;
 import java.util.Date;
 
-public class RangeTimePickerDialog extends DialogFragment {
+public class StartEndTimePickerDialog extends DialogFragment {
     public static String HOUR_START = "hourStart";
     public static String MINUTE_START = "minuteStart";
     public static String HOUR_END = "hourEnd";
@@ -80,8 +82,8 @@ public class RangeTimePickerDialog extends DialogFragment {
         void onSelectedTime(int hourStart, int minuteStart, int hourEnd, int minuteEnd);
     }
 
-    public RangeTimePickerDialog newInstance() {
-        RangeTimePickerDialog f = new RangeTimePickerDialog();
+    public StartEndTimePickerDialog newInstance() {
+        StartEndTimePickerDialog f = new StartEndTimePickerDialog();
         return f;
     }
 
@@ -97,8 +99,8 @@ public class RangeTimePickerDialog extends DialogFragment {
      * @param is24HourView          Indicates if the format should be 24 hours
      * @return
      */
-    public RangeTimePickerDialog newInstance(int colorBackgroundHeader, int colorTabUnselected, int colorTabSelected, int colorTextButton, boolean is24HourView) {
-        RangeTimePickerDialog f = new RangeTimePickerDialog();
+    public StartEndTimePickerDialog newInstance(int colorBackgroundHeader, int colorTabUnselected, int colorTabSelected, int colorTextButton, boolean is24HourView) {
+        StartEndTimePickerDialog f = new StartEndTimePickerDialog();
         this.colorTabUnselected = colorTabUnselected;
         this.colorBackgroundHeader = colorBackgroundHeader;
         this.colorBackgroundTimePickerHeader = colorBackgroundHeader;
@@ -512,17 +514,17 @@ public class RangeTimePickerDialog extends DialogFragment {
     /**
      * Set color of timePicker'header
      *
-     * @param rangeTimePickerDialog Dialog where is located the timePicker
+     * @param startEndTimePickerDialog Dialog where is located the timePicker
      * @param color                 Color to set
      * @param nameTimePicker        id of timePicker declared into xml (eg. my_time_picker [android:id="@+id/my_time_picker"])
      */
-    private void setTimePickerHeaderBackgroundColor(RangeTimePickerDialog rangeTimePickerDialog, int color, String nameTimePicker) {
+    private void setTimePickerHeaderBackgroundColor(StartEndTimePickerDialog startEndTimePickerDialog, int color, String nameTimePicker) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             try {
                 Field mTimePickerField;
-                mTimePickerField = RangeTimePickerDialog.class.getDeclaredField(nameTimePicker);
+                mTimePickerField = StartEndTimePickerDialog.class.getDeclaredField(nameTimePicker);
                 mTimePickerField.setAccessible(true);
-                final TimePicker mTimePicker = (TimePicker) mTimePickerField.get(rangeTimePickerDialog);
+                final TimePicker mTimePicker = (TimePicker) mTimePickerField.get(startEndTimePickerDialog);
                 int headerId = Resources.getSystem().getIdentifier("time_header", "id", "android");
                 final View header = mTimePicker.findViewById(headerId);
                 header.setBackgroundColor(color);
@@ -549,12 +551,12 @@ public class RangeTimePickerDialog extends DialogFragment {
         isMinutesEnabled = value;
     }
 
-    private void setMinutesEnabled(RangeTimePickerDialog rangeTimePickerDialog, boolean value, String nameTimePicker) {
+    private void setMinutesEnabled(StartEndTimePickerDialog startEndTimePickerDialog, boolean value, String nameTimePicker) {
         try {
             Field mTimePickerField;
-            mTimePickerField = RangeTimePickerDialog.class.getDeclaredField(nameTimePicker);
+            mTimePickerField = StartEndTimePickerDialog.class.getDeclaredField(nameTimePicker);
             mTimePickerField.setAccessible(true);
-            final TimePicker mTimePicker = (TimePicker) mTimePickerField.get(rangeTimePickerDialog);
+            final TimePicker mTimePicker = (TimePicker) mTimePickerField.get(startEndTimePickerDialog);
             int minutesId, hoursId;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 minutesId = Resources.getSystem().getIdentifier("minutes", "id", "android");
@@ -653,9 +655,9 @@ public class RangeTimePickerDialog extends DialogFragment {
     private void setInputKeyboardAsDefault(String timePickerName) {
         Field mTimePickerField;
         try {
-            mTimePickerField = RangeTimePickerDialog.class.getDeclaredField(timePickerName);
+            mTimePickerField = StartEndTimePickerDialog.class.getDeclaredField(timePickerName);
             mTimePickerField.setAccessible(true);
-            final TimePicker mTimePicker = (TimePicker) mTimePickerField.get(RangeTimePickerDialog.this);
+            final TimePicker mTimePicker = (TimePicker) mTimePickerField.get(StartEndTimePickerDialog.this);
             final int toggleModeId = Resources.getSystem().getIdentifier("toggle_mode", "id", "android");
             final View toggleModeView = mTimePicker.findViewById(toggleModeId);
             toggleModeView.callOnClick();
