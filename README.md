@@ -1,4 +1,5 @@
-# Range-Time-Picker-Dialog
+# Start-End-TimePicker-Dialog
+[![](https://jitpack.io/v/KarthikKompelli/Start-End-TimePicker-Dialog.svg)](https://jitpack.io/#KarthikKompelli/Start-End-TimePicker-Dialog)
 [![](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 <a target="_blank" href="https://developer.android.com/reference/android/os/Build.VERSION_CODES.html#ICE_CREAM_SANDWICH"><img src="https://img.shields.io/badge/API-14%2B-blue.svg?style=flat" alt="API" /></a>
 
